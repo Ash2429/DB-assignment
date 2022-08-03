@@ -21,6 +21,14 @@ export const ErrorCodes: { [key: string]: CustomError } = {
     EMPLOYEE_WITH_ID_NOT_FOUND:{
         CODE:"EMPLOYEE_WITH_ID_NOT_FOUND",
         MESSAGE:"Emplyee with given ID not found",
+    },
+    IncorrectUsernameOrPasswordException:{
+        CODE:"EMPLOYEE_WITH_ID_NOT_FOUND",
+        MESSAGE:"Incorrect Username Or Password Exception",
+    },
+    UserNotAuthorizedException:{
+        CODE:"UserNotAuthorizedException",
+        MESSAGE:"User Not Authorized Exception",
     }
 };
 

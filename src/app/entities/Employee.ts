@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from "typeorm";
+import { Address } from "./Address";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne, OneToOne } from "typeorm";
 import { AbstractEntity } from "./AbstractEntity";
 import { Department } from "./Department";
 
@@ -22,8 +23,15 @@ import { Department } from "./Department";
         @Column({ nullable: false })
         public experience: number;
         
+
+        @Column({ nullable: true })
+        public password: string;
+
+        @OneToOne(() => Address, { cascade: true })
+        @JoinColumn()
+        public address : Address
         @Column({ nullable: false })
-        public address: string;
+        public addressId: string;
 
         @ManyToOne(() => Department, { cascade: true })
         @JoinColumn()

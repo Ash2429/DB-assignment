@@ -30,15 +30,19 @@ public async createDepartment(DepartmentDetails: any) {
 }
 
 public async updateDepartment(id:string , DepartmentDetails: any) {
+    const newDept =plainToClass(Department,{
+        id:id,
+        name:DepartmentDetails.name
+    })
+    const save=await this.DepartmentRepo.updateDepartmentDetails(newDept)
     const DepartmentRepo = getConnection().getRepository(Department);
     const updateDepartmentDetails = await DepartmentRepo.update({ id, deletedAt: null }, DepartmentDetails
     );
     return updateDepartmentDetails;
 }
 public async deleteDepartment(id: string) {
-    const DepartmentRepo = getConnection().getRepository(Department);
-    return DepartmentRepo.softDelete({
-        id
-    });
+    const save = await this.DepartmentRepo.deleteDepartmentDetails(id);
+    return save
+    
 } 
 }
